@@ -3,14 +3,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: laravel-app
+    container_name: crypto-exchange
     working_dir: /var/www/html
     volumes:
-      - ./src:/var/www/html
+      - ./backend:/var/www/html
     ports:
       - "8000:8000"
     environment:
-      - PHP_MEMORY_LIMIT=256M
+      - PHP_MEMORY_LIMIT=1G
     command: sh -c "composer install && php artisan serve --host=0.0.0.0 --port=8000"
     depends_on:
       - mysql
